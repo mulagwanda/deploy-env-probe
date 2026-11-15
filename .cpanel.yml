@@ -1,9 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== PHP ===" > ${DEPLOYPATH}public/probe.txt && php -v >> ${DEPLOYPATH}public/probe.txt 2>&1
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== COMPOSER ===" >> ${DEPLOYPATH}public/probe.txt && (which composer >> ${DEPLOYPATH}public/probe.txt 2>&1; composer --version >> ${DEPLOYPATH}public/probe.txt 2>&1)
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== NODE ===" >> ${DEPLOYPATH}public/probe.txt && (which node >> ${DEPLOYPATH}public/probe.txt 2>&1; node --version >> ${DEPLOYPATH}public/probe.txt 2>&1)
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== NPM ===" >> ${DEPLOYPATH}public/probe.txt && (which npm >> ${DEPLOYPATH}public/probe.txt 2>&1; npm --version >> ${DEPLOYPATH}public/probe.txt 2>&1)
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== PHP8.3 BINARY ===" >> ${DEPLOYPATH}public/probe.txt && which php8.3 >> ${DEPLOYPATH}public/probe.txt 2>&1
-    - export DEPLOYPATH=/home/atpsaeventshq/big5test-app/ && echo "=== CWD/PWD DURING DEPLOY ===" >> ${DEPLOYPATH}public/probe.txt && pwd >> ${DEPLOYPATH}public/probe.txt 2>&1 && whoami >> ${DEPLOYPATH}public/probe.txt 2>&1
+    - export D=/home/atpsaeventshq/big5test-app/ && echo "=== NODE ===" >> ${D}public/probe.txt; (which node >> ${D}public/probe.txt 2>&1; node --version >> ${D}public/probe.txt 2>&1); true
+    - export D=/home/atpsaeventshq/big5test-app/ && echo "=== NPM ===" >> ${D}public/probe.txt; (which npm >> ${D}public/probe.txt 2>&1; npm --version >> ${D}public/probe.txt 2>&1); true
+    - export D=/home/atpsaeventshq/big5test-app/ && echo "=== PHP8.3 BINARY ===" >> ${D}public/probe.txt; (which php8.3 >> ${D}public/probe.txt 2>&1; ls -la /usr/local/bin/ea-php* >> ${D}public/probe.txt 2>&1; ls -la /opt/cpanel/ea-php83/root/usr/bin/php >> ${D}public/probe.txt 2>&1); true
+    - export D=/home/atpsaeventshq/big5test-app/ && echo "=== PWD/WHOAMI ===" >> ${D}public/probe.txt; pwd >> ${D}public/probe.txt 2>&1; whoami >> ${D}public/probe.txt 2>&1
+    - export D=/home/atpsaeventshq/big5test-app/ && echo "=== GIT in deploy env ===" >> ${D}public/probe.txt; which git >> ${D}public/probe.txt 2>&1
